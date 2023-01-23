@@ -1,8 +1,8 @@
-# Deep_Learning_with_Tensorflow_notes
+# Deep_Learning_with_Tensorflow_notes :spiral_notepad::pencil2::pushpin: #
 
-## Tensörler ## 
+## Tensörler :heartbeat: ## 
 
-TensorFlow, tf.Tensor nesneleri olarak temsil edilen çok boyutlu diziler veya tensörler üzerinde çalışır. İşte üç boyutlu bir tensör:
+TensorFlow, tf.Tensor nesneleri olarak temsil edilen çok boyutlu diziler veya tensörler üzerinde çalışır. İşte üç boyutlu bir tensor :point_right::
 
 ```
 import tensorflow as tf
@@ -18,14 +18,14 @@ constant_x adında bir tf.Operation oluşturur ve bir tensor döndürür.
 print(x.shape)
 print(x.dtype)
 ```
-Tensor.shape : her bir ekseni boyunca tensörün boyutunu size söyler. --> yukarıdaki tensor için (3,3)
-Tensor.dtype : tensördeki tüm öğelerin türünü söyler. --> yukarıdaki tensor için <dtype: 'float32'>
+Tensor.shape : her bir ekseni boyunca tensörün boyutunu size söyler. :point_right: yukarıdaki tensor için (3,3)
+Tensor.dtype : tensördeki tüm öğelerin türünü söyler. :point_right: yukarıdaki tensor için <dtype: 'float32'>
 
 TensorFlow, tensörler üzerinde standart matematiksel işlemlerin yanı sıra makine öğrenimi için özelleştirilmiş birçok işlemi uygular.
 
 tf.matMul():  işlevi, A * B olmak üzere iki matrisin iç çarpımını hesaplamak için kullanılır.
 
-'@' sembolü Matris çarpımı olarak kullanılır ve tf.matmul()'a eşittir.
+'@' sembolü Matris çarpımı olarak kullanılır ve tf.matmul()'a eşittir.:woman_technologist:
 
 ```
 x @ tf.transpose(x)
@@ -72,7 +72,7 @@ Tensor = tf.constant( [ [[1,2,3],[2,3,1],[3,4,5]] , [[4,5,6],[5,8,7],[6,7,8]] , 
 
 [image source](https://towardsdatascience.com/how-convolution-neural-networks-interpret-images-1f99913070b2)
 
-Görüntüleri düşündüğümüzde genişliğe ve yüksekliğe sahip olduklarını biliriz. Görüntülerin renklere de sahip olduğunu düşünürsek bize tek boyut yeterli olmayacaktır.Görüntüler renk kanallarıyla gösterilir. RGB, Red (kırmızı), Green (Yeşil) ve Blue (Maviden) oluşur. 
+Görüntüleri düşündüğümüzde genişliğe ve yüksekliğe sahip olduklarını biliriz. Görüntülerin renklere de sahip olduğunu düşünürsek bize tek boyut yeterli olmayacaktır.Görüntüler renk kanallarıyla gösterilir. RGB, Red (kırmızı):red_circle:, Green (Yeşil):green_circle: ve Blue (Maviden):large_blue_circle: oluşur. 
 
 tf.Variable(): Değişkenler tf.Variable sınıfı aracılığıyla oluşturulur ve izlenir. Bir tf.Variable , değeri değiştirilebilen bir tensörü temsil eder. Belirli işlemler, bu tensörün değerlerini okumanıza ve değiştirmenize izin verir. 
 
