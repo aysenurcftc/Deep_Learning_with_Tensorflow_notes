@@ -1,1 +1,80 @@
 # Deep_Learning_with_Tensorflow_notes
+
+## Tensörler ## 
+
+TensorFlow, tf.Tensor nesneleri olarak temsil edilen çok boyutlu diziler veya tensörler üzerinde çalışır. İşte üç boyutlu bir tensör:
+
+```
+import tensorflow as tf
+
+x = tf.constant([[1., 2., 3.],
+                 [4., 5., 6.],
+                 [8.,9.,10.]],name = 'constant_x')
+                 
+```
+
+constant_x adında bir tf.Operation oluşturur ve bir tensor döndürür.
+```
+print(x.shape)
+print(x.dtype)
+```
+Tensor.shape : her bir ekseni boyunca tensörün boyutunu size söyler. --> yukarıdaki tensor için (3,3)
+Tensor.dtype : tensördeki tüm öğelerin türünü söyler. --> yukarıdaki tensor için <dtype: 'float32'>
+
+TensorFlow, tensörler üzerinde standart matematiksel işlemlerin yanı sıra makine öğrenimi için özelleştirilmiş birçok işlemi uygular.
+
+tf.matMul():  işlevi, A * B olmak üzere iki matrisin iç çarpımını hesaplamak için kullanılır.
+
+'@' sembolü Matris çarpımı olarak kullanılır ve tf.matmul()'a eşittir.
+
+```
+x @ tf.transpose(x)
+----------------------
+c = tf.matmul(x,tf.transpose(x)) 
+```
+Bu iki ifade aynı sonucu verir.
+
+tf.add(): iki tf.Tensor nesnesinin birbirine eklenmesi
+
+tf.function, işlev için bir TensorFlow statik yürütme(static execution graph) grafiği oluşturmak üzere TensorFlow Autograph'ı kullanır.
+
+```
+@tf.function
+def add(a,b):
+    c = tf.add(a, b)
+    #c = a + b is also a way to define the sum of the terms
+    print(c)
+    return c
+```
+
+```
+@tf.function
+def mathmul(a,b):
+  return tf.matmul(a, b)
+  
+ ```
+
+TensorFlow kodu iki modda çalıştırılabilir: eager mode ve graph mode. Eager modu, kod çalıştırmanın standart, etkileşimli yoludur: bir işlevi her çağırdığınızda yürütülür.Bununla birlikte, grafik modu(graph mode) biraz farklıdır. Grafik modunda, işlevi yürütmeden önce TensorFlow, işlevi yürütmek için gerekli işlemleri içeren bir veri yapısı olan bir hesaplama grafiği(computation graph) oluşturur.
+
+
+![image](https://upload.wikimedia.org/wikipedia/commons/4/45/Dimension_levels.svg)
+
+Sıfır boyut(zero dimension) tek bir nesne/öge, skaler bir değer olarak görülebilir. Bir boyut(one dimension) ise bir çizgi veya bir vektör olarak görülebilir. 2-boyut(2-dimesion) bir yüzey gibi düşünebiliriz. Matrisleri buna örnek olarak verebiliriz. 3-boyutta ise tensorleri örnek verebiliz.
+
+```
+Scalar = tf.constant(8)
+Vector = tf.constant([2,6,3])
+Matrix = tf.constant([[1,2,3],[4,5,6],[7,8,9]])
+Tensor = tf.constant( [ [[1,2,3],[2,3,1],[3,4,5]] , [[4,5,6],[5,8,7],[6,7,8]] , [[7,8,9],[8,9,10],[9,10,11]] ] )
+```
+
+![image](https://miro.medium.com/max/900/1*AB3CIu1s6LllkcXy4ZpYMQ.png)
+
+[image source](https://towardsdatascience.com/how-convolution-neural-networks-interpret-images-1f99913070b2)
+
+Görüntüleri düşündüğümüzde genişliğe ve yüksekliğe sahip olduklarını biliriz. Görüntülerin renklere de sahip olduğunu düşünürsek bize tek boyut yeterli olmayacaktır.Görüntüler renk kanallarıyla gösterilir. RGB, Red (kırmızı), Green (Yeşil) ve Blue (Maviden) oluşur. 
+
+tf.Variable(): Değişkenler tf.Variable sınıfı aracılığıyla oluşturulur ve izlenir. Bir tf.Variable , değeri değiştirilebilen bir tensörü temsil eder. Belirli işlemler, bu tensörün değerlerini okumanıza ve değiştirmenize izin verir. 
+
+
+
