@@ -105,5 +105,73 @@ Görüntüleri düşündüğümüzde genişliğe ve yüksekliğe sahip olduklar�
 
 tf.Variable(): Değişkenler tf.Variable sınıfı aracılığıyla oluşturulur ve izlenir. Bir tf.Variable , değeri değiştirilebilen bir tensörü temsil eder. Belirli işlemler, bu tensörün değerlerini okumanıza ve değiştirmenize izin verir. 
 
+ Medical Cost Personal Datasets [Source](https://www.kaggle.com/code/sudhirnl7/linear-regression-tutorial/data)
+ 
+ ### Linear Regression with TensorFlow ###
+ 
+ ```
+df = pd.read_csv("insurance.csv")
+ ```
+ Vücut Kitle Endeksi (BMI) ile charge(ücret)'i tahmin etmek için doğrusal regresyonu(Linear Regression) kullandığımızı varsayalım.
+ 
+  ```
+ train_x = np.asanyarray(df[['bmi']])
+train_y = np.asanyarray(df[['charges']])
+ ```
+restgele bir şekilde a ve b değişkenlerini başlatıyoruz.
+ 
+  ```
+a = tf.Variable(20.0)
+b = tf.Variable(30.2)
+ 
+  ```
+  
+ lineer fonksiyonu tanımlıyoruz. Y = aX + b -->> Burada Y bağımlı değiken, a 'eğim(slope)' veya 'gradient', X bağımsiz değişken ve b 'intercept' olarak adlandırılır.
+  
+  
+ ```
+ def h(x):
+   y = a*x + b
+   return y
+    
+ ```
+ 
+ 
+Loss Fonksiyonunu tanımlıyoruz. Tahmin edilen değerler ile hedef değerler(sahip olduğumuz değerler) arasındaki farkın kare hatasını(squared error) minimize etmeyi hedefliyoruz. 
 
 
+   ```
+def loss_object(y,train_y) :
+    return tf.reduce_mean(tf.square(y - train_y))
+
+   ```
+Geriye yayılım(backpropagation) ile parametreler güncellenmektedir. 
+   
+    ```
+   learning_rate = 0.01
+train_data = []
+loss_values =[]
+a_values = []
+b_values = []
+# steps of looping through all your data to update the parameters
+training_epochs = 200
+
+# train model
+for epoch in range(training_epochs):
+    with tf.GradientTape() as tape:
+        y_predicted = h(train_x)
+        loss_value = loss_object(train_y,y_predicted)
+        loss_values.append(loss_value)
+
+        # get gradients
+        gradients = tape.gradient(loss_value, [b,a])
+        
+        # compute and adjust weights
+        a_values.append(a.numpy())
+        b_values.append(b.numpy())
+        b.assign_sub(gradients[0]*learning_rate)
+        a.assign_sub(gradients[1]*learning_rate)
+        if epoch % 5 == 0:
+            train_data.append([a.numpy(), b.numpy()])
+   
+    ```
