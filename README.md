@@ -145,10 +145,13 @@ def loss_object(y,train_y) :
     return tf.reduce_mean(tf.square(y - train_y))
 
    ```
+   
 Geriye yayılım(backpropagation) ile parametreler güncellenmektedir. Gradientleri hesaplamak için GradientTape kullanıyoruz. 
    
-    ```
-   learning_rate = 0.01
+   
+   
+```
+learning_rate = 0.01
 train_data = []
 loss_values =[]
 a_values = []
@@ -171,6 +174,4 @@ for epoch in range(training_epochs):
         if epoch % 5 == 0:
             train_data.append([a.numpy(), b.numpy()])
    
-    ```
-
-    
+```
