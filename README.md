@@ -56,6 +56,35 @@ def mathmul(a,b):
 
 TensorFlow kodu iki modda çalıştırılabilir: eager mode ve graph mode. Eager modu, kod çalıştırmanın standart, etkileşimli yoludur: bir işlevi her çağırdığınızda yürütülür.Bununla birlikte, grafik modu(graph mode) biraz farklıdır. Grafik modunda, işlevi yürütmeden önce TensorFlow, işlevi yürütmek için gerekli işlemleri içeren bir veri yapısı olan bir hesaplama grafiği(computation graph) oluşturur.
 
+```
+a = tf.constant(np.array[1. , 2. , 3. ])
+b = tf.constant(np.array[4. , 5. , 6. ])
+```
+a ve b tensörünü oluşturuyoruz
+```
+c = tf.tensordot(a,b,1)
+```
+dot product(iç çarpım) hesaplar ve sonucu c'ye atarız.
+Ancak şu ana kadar herhangi bir hesaplama yapılmadı. c yalnızca henüz bir değeri olmayan execution graph(yürütme grafiği) temsil eder.
+
+```
+session = tf.Session()
+output = session.run(c)
+session.close()
+```
+
+'session' bir kez yürütüldüğünde, bir hesaplama gerçekleşir ve c'ye bir değer atanır. Bu ara sonuçlara erişmeyi zorlaştırdığı için hata ayıklamayı(debug) zorlaştırır.
+
+```
+a = tf.constant(np.array[1. , 2. , 3. ])
+b = tf.constant(np.array[4. , 5. , 6. ])
+
+c = tf.tersordot(a,b,1)
+
+output = c.numpy()
+```
+Eager execution etkinleştirildiğinde, kod satır satır yürütülür ve ara sonuçlar anında kullanılabilir. Tensorflow kodunun sıradan python kodu gibi görünmesini sağlar.
+
 
 ![image](https://upload.wikimedia.org/wikipedia/commons/4/45/Dimension_levels.svg)
 
