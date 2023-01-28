@@ -56,7 +56,7 @@ def mathmul(a,b):
 
 TensorFlow kodu iki modda çalıştırılabilir: eager mode ve graph mode. Eager modu, kod çalıştırmanın standart, etkileşimli yoludur: bir işlevi her çağırdığınızda yürütülür.Bununla birlikte, grafik modu(graph mode) biraz farklıdır. Grafik modunda, işlevi yürütmeden önce TensorFlow, işlevi yürütmek için gerekli işlemleri içeren bir veri yapısı olan bir hesaplama grafiği(computation graph) oluşturur.
 
-### Eager Execution ###
+### Eager Execution :sunflower: ###
 TensorFlow kodunun yürütülmesine ve satır satır değerlendirilmesine olanak sağlar. TensorFlow 2.x ile Eager Execution varsayılan olarak etkindir. Bunu ağağıdaki kod bloğunu çalıştırarak görebiliriz. 
 
 ```
@@ -69,15 +69,15 @@ True değerini alırız. Disable hale getirmek için ise:
 from tensorflow.python.framework.ops import disable_eager_execution
 disable_eager_execution()
 ```
-Ardından tekrar bu kod parçasını çalıştırdığımızda False değerini alırız.
+Ardından tekrar bu kod parçasını çalıştırdığımızda:
 
 ```
 tf.executing_eagerly()
 ```
 
-Artık bu disable(etkisiz) anlamına gelir.
+False değerini alırız.Artık bu disable(etkisiz) anlamına gelir.
 
-
+Şu örneğe bakarsak: :point_right:
 
 ```
 a = tf.constant(np.array[1. , 2. , 3. ])
@@ -90,7 +90,7 @@ c = tf.tensordot(a,b,1)
 dot product(iç çarpım) hesaplar ve sonucu c'ye atarız.
 Ancak şu ana kadar herhangi bir hesaplama yapılmadı. c yalnızca henüz bir değeri olmayan execution graph(yürütme grafiği) temsil eder.
 
-Session, Tensorflow 2.x'te tf.compat.v1.Session() aracılığıyla erişilebilir.
+:orange_book: Session, Tensorflow 2.x'te tf.compat.v1.Session() aracılığıyla erişilebilir.
 
 ```
 session = tf.compat.v1.Session()
@@ -109,11 +109,6 @@ c = tf.tersordot(a,b,1)
 output = c.numpy()
 ```
 Eager execution etkinleştirildiğinde, kod satır satır yürütülür ve ara sonuçlar anında kullanılabilir. Tensorflow kodunun sıradan python kodu gibi görünmesini sağlar.
-
-
-
-
-
 
 
 ![image](https://upload.wikimedia.org/wikipedia/commons/4/45/Dimension_levels.svg)
@@ -135,18 +130,17 @@ Görüntüleri düşündüğümüzde genişliğe ve yüksekliğe sahip olduklar�
 
 tf.Variable(): Değişkenler tf.Variable sınıfı aracılığıyla oluşturulur ve izlenir. Bir tf.Variable , değeri değiştirilebilen bir tensörü temsil eder. Belirli işlemler, bu tensörün değerlerini okumanıza ve değiştirmenize izin verir. 
 
- Medical Cost Personal Datasets [Source](https://www.kaggle.com/code/sudhirnl7/linear-regression-tutorial/data)
  
  ### Linear Regression with TensorFlow ###
  
  ```
-df = pd.read_csv("insurance.csv")
+df = pd.read_csv("FuelConsumptionCo2.csv")
  ```
- Vücut Kitle Endeksi (BMI) ile charge(ücret)'i tahmin etmek için doğrusal regresyonu(Linear Regression) kullandığımızı varsayalım.
+Doğrusal regresyonu(Linear Regression) kullandığımızı varsayalım.
  
   ```
- train_x = np.asanyarray(df[['bmi']])
-train_y = np.asanyarray(df[['charges']])
+ train_x = np.asanyarray(df[['ENGINESIZE']])
+train_y = np.asanyarray(df[['CO2EMISSIONS']])
  ```
 restgele bir şekilde a ve b değişkenlerini başlatıyoruz.
  
@@ -156,7 +150,7 @@ b = tf.Variable(30.2)
  
   ```
   
- lineer fonksiyonu tanımlıyoruz. Y = aX + b -->> Burada Y bağımlı değiken, a 'eğim(slope)' veya 'gradient', X bağımsiz değişken ve b 'intercept' olarak adlandırılır.
+ lineer fonksiyonu tanımlıyoruz. Y = aX + b :point_right: Burada Y bağımlı değiken, a 'eğim(slope)' veya 'gradient', X bağımsiz değişken ve b 'intercept' olarak adlandırılır.
   
   
  ```
@@ -177,7 +171,6 @@ def loss_object(y,train_y) :
    ```
    
 Geriye yayılım(backpropagation) ile parametreler güncellenmektedir. Gradientleri hesaplamak için GradientTape kullanıyoruz. 
-   
    
    
 ```
