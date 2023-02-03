@@ -198,3 +198,35 @@ for epoch in range(training_epochs):
             train_data.append([a.numpy(), b.numpy()])
    
 ```
+
+### RNN
+Recurrent Neural Networks(RNN)'de kısaca bir sonraki katmanın çıktısı(output)  bir sonraki girdiye(input)' eklenir ve aynı katmana geri beslenir. 
+
+RNN'lerde girdiler birbiri ile ilişkilidir.
+
+RNN'ler önceki girdileri hatırlar ve her girdi için ilişki kurar.
+
+Belirli bir noktaya kadar yapılan analizi hatırlayabilir. RNN'nin hafızası olarak düşünebiliriz.
+
+Bir veri kümesindeki noktalar, veri kümesindeki diğer noktalara bağımlı olduğunda, verilerin sıralı veriler(Sequential data) olduğu söylenir.
+
+RNN sequential data'yı işleyebilen bir mekanizmaya sahiptir. 
+
+![resim](https://miro.medium.com/max/1400/1*HgAY1lLMYSANqtgTgwWeXQ.png)
+
+
+### LSTM
+
+LSTM üç lojistik yapıdan oluşur.
+
+LSTM yapısı içerisindeki kapılar(gate) neyin hatırlanacağını, neyin unutulacağını belirler. Yani gelen girdi önemsizse unutulur, Önemliyse bir sonraki aşamaya aktarılır.
+
+Forget gate(unutma kapısı): Hangi bilginin tutulacağını veya unutalacağına karar verir. 
+
+Input gate(girdi kapısı) Cell state'i güncellemek için kullanılır.
+
+Output gate(Çıktı kapısı) Bir sonraki katmana gönderilecek değere karar verir.
+
+![resim](https://miro.medium.com/max/984/1*Mb_L_slY9rjMr8-IADHvwg.png)
+
+
