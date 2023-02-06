@@ -1,7 +1,15 @@
 # Deep_Learning_with_Tensorflow_notes :spiral_notepad::pencil2::pushpin: #
 
-## Tensörler :heartbeat: ## 
+1) [Tensörler](#tensörler)
+2) [Linear Regression with TensorFlow](#linear-regression-with-tensorflow)
+3) [Recurrent Neural Networks(RNN)](#rnn)
+4) [Long short-term memory(LSTM)](#lstm)
+5) [Restricted Boltzmann Machines(RBM)](#restricted-boltzmann-machines)
 
+
+## Tensörler ##  
+
+:heartbeat:
 TensorFlow, tf.Tensor nesneleri olarak temsil edilen çok boyutlu diziler veya tensörler üzerinde çalışır. İşte üç boyutlu bir tensor :point_right::
 
 ```
@@ -228,5 +236,21 @@ Input gate(girdi kapısı) Cell state'i güncellemek için kullanılır.
 Output gate(Çıktı kapısı) Bir sonraki katmana gönderilecek değere karar verir.
 
 ![resim](https://miro.medium.com/max/984/1*Mb_L_slY9rjMr8-IADHvwg.png)
+
+### Restricted Boltzmann Machines ###
+
+Restricted Boltzmann Machines(RBM) yalnızca iki katmandan oluşan unsupervised(denetimsiz) sinir ağlarıdır. Girdiyi(input) yeniden yapılandırarak verideki kalıpları bulmak için kullanılır. RBM'in birinci katmanı giriş(input) katmanı ikinci katmanı ise gizli(hidden) katmanıdır.
+
+![resim](https://media.geeksforgeeks.org/wp-content/uploads/20200927214428/RBM-277x300.jpg)  
+
+:star2: "restricted" olarak adlandırılmasının nedeni ise aynı katmandaki nöronların birbirine bağlı olmaması.
+
+1. RBM'in ilk adımı forward aşamasıdır. Bu aşamada girişin bir image olduğunu düşünürsek giriş görüntümüz binary değerlere dönüştürülür ve değerler ağırlıklar(weight) çarpılıp bias değerleri ile toplanarak ağ beslenir.Daha sonra sonuç aktivasyon fonksiyonuna verilir. Oluşan olasılık dağılımından bir örnek(sample) alınır ve hangi nöronların aktifleşip aktifleşmediği bulunur. 
+
+2. Backward aşamasında, gizli(hidden) katmanlardaki aktif nöronlar girdinin yeniden yapılandırıldığı(reconstructed) input diğer bir değişle visible(görünür) katmana geri gönderilir.Bu adımda geriye doğru iletilen veriler aynı zamanda ileri yayılımda(forward) kullanılan aynı weight(ağırlık) ve bias ile işlemden geçirilir. Backward orijinal girdinin olasılık dağılımı hakkında tahminler yapmakla ilgilidir. 
+
+3. Bu aşamadan sonra RBM hatayı(error) hesaplar ve bunu en aza indirmek için ağırlık(weight) ve bias güncellenir. Hatayı 1.adım ile bir sonraki adım arasındaki kare farkının toplamı olarak hesaplar. 3. adım hata(error) yeterince küçülene kadar devam eder.
+
+:bulb: RBM deterministik(deterministic) bir yaklaşım yerine skokastik(stochastic) bir yaklaşım kullanmaları bakımından Autoencoders'lerden farklıdır.
 
 
