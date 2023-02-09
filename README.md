@@ -254,3 +254,11 @@ Restricted Boltzmann Machines(RBM) yalnızca iki katmandan oluşan unsupervised(
 :bulb: RBM deterministik(deterministic) bir yaklaşım yerine skokastik(stochastic) bir yaklaşım kullanmaları bakımından Autoencoders'lerden farklıdır.
 
 
+### Autoencoders ##
+
+
+Autoencoder bir unsupervised(denetimsiz) öğrenme algoritması türüdür. Verilen inputu yeniden oluşturabilmek için önemli özellikleri çıkaran bir sinir ağıdır. Encoder ve decoder olarak ikiye ayrılır.RMB'ler de bir tür autoencoder'die. RMB ve autoencoder arasındaki fark ise::point_right:
+
+RBM yalnızca iki katmandan oluşan autoencoderlerdir. Bununla beraber autoencoders giriş katmanından ve birkaç gizli(hidden) katmandan oluşan sığ sinir ağlarıdır. 
+
+Bir diğer yandan autoencoders stokastik(stochastic) yaklaşım yerine deterministik(deterministic) yaklaşımı tercih eder. 
