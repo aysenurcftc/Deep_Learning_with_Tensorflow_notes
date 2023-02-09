@@ -5,6 +5,7 @@
 3) [Recurrent Neural Networks(RNN)](#rnn)
 4) [Long short-term memory(LSTM)](#lstm)
 5) [Restricted Boltzmann Machines(RBM)](#restricted-boltzmann-machines)
+6) [Autoencoders](#autoencoders)
 
 
 ## Tensörler ##  
